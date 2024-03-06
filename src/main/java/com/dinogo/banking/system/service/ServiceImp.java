@@ -1,11 +1,15 @@
 package com.dinogo.banking.system.service;
 
+import com.dinogo.banking.system.entity.DTO.PhoneNumberDTO;
+import com.dinogo.banking.system.entity.Email;
 import com.dinogo.banking.system.entity.PhoneNumber;
 import com.dinogo.banking.system.exceptionhandling.BankingSystemCommonException;
+import com.dinogo.banking.system.mapper.PhoneNumberMapper;
 import com.dinogo.banking.system.repository.EmailRepository;
 import com.dinogo.banking.system.repository.PhoneNumberRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.List;
 import java.util.UUID;
 
 @org.springframework.stereotype.Service
@@ -16,9 +20,22 @@ public class ServiceImp implements Service{
     @Autowired
     private EmailRepository emailRepository;
 
+    @Autowired
+    private PhoneNumberMapper phoneNumberMapper;
+
     @Override
-    public void getAllNumbersByUser(UUID userId) {
-        phoneNumberRepository.findAllByUserId(userId);
+    public List<PhoneNumberDTO> getAllNumbersByUser(UUID userId) {
+        return phoneNumberMapper.entityListToDTOList(
+                phoneNumberRepository.findAllByUserId(userId));
+    }
+
+    @Override
+    public void updatePhoneNumber(PhoneNumber phoneNumber) {
+        if(phoneNumberRepository.countOfBusyPhoneNumbers(phoneNumber.getPhoneNumber()) > 0) {
+            throw new BankingSystemCommonException("Такой номер телефона" +
+                    "уже существует");
+        }
+        phoneNumberRepository.save(phoneNumber);
     }
 
     @Override
@@ -32,13 +49,14 @@ public class ServiceImp implements Service{
     }
 
     @Override
-    public void updatePhoneNumber(PhoneNumber phoneNumber) {
-        if(phoneNumberRepository.countOfBusyPhoneNumbers(phoneNumber.getPhoneNumber()) > 0) {
-            throw new BankingSystemCommonException("Такой номер телефона" +
-                    "уже существует");
+    public void updateEmail(Email email) {
+        if(emailRepository.countOfBusyEmails(email.getEmail()) > 0) {
+            throw new BankingSystemCommonException("такой адрес электронной" +
+                    "почты уже существует");
         }
-            phoneNumberRepository.save(phoneNumber);
+        emailRepository.save(email);
     }
+
 
     @Override
     public void deleteEmail(UUID emailId) {

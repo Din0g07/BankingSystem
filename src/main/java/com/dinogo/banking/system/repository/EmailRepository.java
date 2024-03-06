@@ -15,4 +15,9 @@ public interface EmailRepository extends JpaRepository<Email, UUID> {
     nativeQuery = true)
     int countEmailsByUserWithEmailId(UUID emailId);
 
+    @Query(value = "SELECT COUNT(*) FROM emails " +
+            "WHERE email = :email",
+            nativeQuery = true)
+    int countOfBusyEmails(String email);
+
 }
