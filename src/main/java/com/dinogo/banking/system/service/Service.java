@@ -1,17 +1,19 @@
 package com.dinogo.banking.system.service;
 
+import com.dinogo.banking.system.entity.DTO.EmailDTO;
 import com.dinogo.banking.system.entity.DTO.PhoneNumberDTO;
-import com.dinogo.banking.system.entity.Email;
-import com.dinogo.banking.system.entity.PhoneNumber;
 
 import java.util.List;
 import java.util.UUID;
 
 public interface Service {
     List<PhoneNumberDTO> getAllNumbersByUser(UUID userId);
-    UUID updatePhoneNumber(PhoneNumber phoneNumber);
+    UUID updatePhoneNumber(PhoneNumberDTO phoneNumberDTO,
+                           UUID id);
+    UUID addNewPhoneNumber(PhoneNumberDTO phoneNumberDTO);
     void deletePhoneNumber(UUID phoneId);
-    void updateEmail(Email email);
+    UUID updateEmail(EmailDTO emailDTO, UUID id);
+    UUID addNewEmail(EmailDTO emailDTO);
     void deleteEmail(UUID emailId);
 
 }

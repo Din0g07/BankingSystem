@@ -8,6 +8,7 @@ import java.util.List;
 
 @Mapper(componentModel = "spring")
 public interface PhoneNumberMapper {
-    PhoneNumberDTO entityToDTO(PhoneNumber phoneNumber);
-    List<PhoneNumberDTO> entityListToDTOList(List<PhoneNumber> phoneNumber);
+    PhoneNumberDTO map(PhoneNumber phoneNumber);
+    PhoneNumber map(PhoneNumberDTO phoneNumberDTO);
+    List<PhoneNumberDTO> map(List<PhoneNumber> phoneNumber);
 }
