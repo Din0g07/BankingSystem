@@ -1,9 +1,8 @@
 package com.dinogo.banking.system.controller;
 
+import com.dinogo.banking.system.entity.DTO.EmailDTO;
 import com.dinogo.banking.system.entity.DTO.PhoneNumberDTO;
 import com.dinogo.banking.system.entity.Email;
-import com.dinogo.banking.system.entity.PhoneNumber;
-import com.dinogo.banking.system.entity.User;
 import com.dinogo.banking.system.service.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -30,14 +29,14 @@ public class Controller {
     }
 
     @PostMapping("/phoneNumbes")
-    public void addNewPhoneNumber(@RequestBody PhoneNumber phoneNumber) {
-        service.updatePhoneNumber(phoneNumber);
+    public void addNewPhoneNumber(@RequestBody PhoneNumberDTO phoneNumberDTO) {
+        service.addNewPhoneNumber(phoneNumberDTO);
     }
 
     @PutMapping("/phoneNumbes/{id}")
-    public void updatePhoneNumber(@RequestBody PhoneNumber phoneNumber
-    , @PathVariable UUID id) {
-        service.updatePhoneNumber(phoneNumber);
+    public void updatePhoneNumber(@RequestBody PhoneNumberDTO phoneNumberDTO,
+                                  @PathVariable UUID id) {
+        service.updatePhoneNumber(phoneNumberDTO, id);
     }
 
     @DeleteMapping("/phoneNumbes/{id}")
@@ -46,13 +45,14 @@ public class Controller {
     }
 
     @PostMapping("/emails")
-    public void addNewEmail(@RequestBody Email email) {
-        service.updateEmail(email);
+    public UUID addNewEmail(@RequestBody EmailDTO emailDTO) {
+        return service.addNewEmail(emailDTO);
     }
 
     @PutMapping("/emails")
-    public void updateEmail(@RequestBody Email email) {
-        service.updateEmail(email);
+    public UUID updateEmail(@RequestBody EmailDTO emailDTO,
+                            @PathVariable UUID id) {
+        return service.updateEmail(emailDTO, id);
     }
 
     @DeleteMapping("/emails/{id}")
@@ -60,7 +60,11 @@ public class Controller {
         service.deleteEmail(id);
     }
 
-    public User usersSearch() {
-
-    }
+//    @GetMapping("/users/search")
+//    public UserDTO usersSearch(@RequestParam(required = false) Date date,
+//                               @RequestParam(required = false) String phoneNumber,
+//                               @RequestParam(required = false) String fullName,
+//                               @RequestParam(required = false) String email) {
+//
+//    }
 }
