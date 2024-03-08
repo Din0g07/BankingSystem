@@ -11,7 +11,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.ArrayList;
-import java.util.Date;
+import java.sql.Date;
 import java.util.List;
 import java.util.UUID;
 
@@ -28,7 +28,7 @@ public class User {
     @Column(name = "full_name")
     private String fullName;
 
-    @Column(name = "date")
+    @Column(name = "date_of_birth")
     private Date date;
 
     @OneToMany(cascade = CascadeType.ALL,

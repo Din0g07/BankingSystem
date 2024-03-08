@@ -2,7 +2,7 @@ package com.dinogo.banking.system.controller;
 
 import com.dinogo.banking.system.entity.DTO.EmailDTO;
 import com.dinogo.banking.system.entity.DTO.PhoneNumberDTO;
-import com.dinogo.banking.system.entity.Email;
+import com.dinogo.banking.system.entity.DTO.UserDTO;
 import com.dinogo.banking.system.service.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -12,8 +12,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.sql.Date;
 import java.util.UUID;
 import java.util.List;
 
@@ -60,11 +62,13 @@ public class Controller {
         service.deleteEmail(id);
     }
 
-//    @GetMapping("/users/search")
-//    public UserDTO usersSearch(@RequestParam(required = false) Date date,
-//                               @RequestParam(required = false) String phoneNumber,
-//                               @RequestParam(required = false) String fullName,
-//                               @RequestParam(required = false) String email) {
-//
-//    }
+    @GetMapping("/users/search")
+    public List<UserDTO> usersSearch(@RequestParam(required = false) Date date,
+                               @RequestParam(required = false) String phoneNumber,
+                               @RequestParam(required = false) String fullName,
+                               @RequestParam(required = false) String email) {
+
+
+        return null;
+    }
 }

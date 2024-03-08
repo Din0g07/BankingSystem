@@ -2,6 +2,7 @@ package com.dinogo.banking.system.service;
 
 import com.dinogo.banking.system.entity.DTO.EmailDTO;
 import com.dinogo.banking.system.entity.DTO.PhoneNumberDTO;
+import com.dinogo.banking.system.entity.DTO.UserDTO;
 import com.dinogo.banking.system.entity.Email;
 import com.dinogo.banking.system.entity.PhoneNumber;
 import com.dinogo.banking.system.exceptionhandling.BankingSystemCommonException;
@@ -11,6 +12,7 @@ import com.dinogo.banking.system.repository.EmailRepository;
 import com.dinogo.banking.system.repository.PhoneNumberRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.sql.Date;
 import java.util.List;
 import java.util.UUID;
 
@@ -88,6 +90,11 @@ public class ServiceImp implements Service{
                     " единственный адрес электронной почты");
         }
         phoneNumberRepository.deleteById(emailId);
+    }
+
+    @Override
+    public List<UserDTO> usersSearch(Date date, String phoneNumber, String fullName, String email) {
+        return null;
     }
 
     private void checkIfPhoneExist(String phoneNumber) {
