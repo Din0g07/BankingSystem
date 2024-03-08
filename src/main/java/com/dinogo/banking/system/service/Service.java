@@ -2,7 +2,9 @@ package com.dinogo.banking.system.service;
 
 import com.dinogo.banking.system.entity.DTO.EmailDTO;
 import com.dinogo.banking.system.entity.DTO.PhoneNumberDTO;
+import com.dinogo.banking.system.entity.DTO.UserDTO;
 
+import java.sql.Date;
 import java.util.List;
 import java.util.UUID;
 
@@ -15,5 +17,10 @@ public interface Service {
     UUID updateEmail(EmailDTO emailDTO, UUID id);
     UUID addNewEmail(EmailDTO emailDTO);
     void deleteEmail(UUID emailId);
+    List<UserDTO> usersSearch(Date date,
+                              String phoneNumber,
+                              String fullName,
+                              String email);
+
 
 }
