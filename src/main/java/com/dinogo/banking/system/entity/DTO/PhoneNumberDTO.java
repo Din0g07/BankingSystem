@@ -1,6 +1,5 @@
 package com.dinogo.banking.system.entity.DTO;
 
-import jakarta.validation.constraints.Digits;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.Getter;
@@ -11,9 +10,9 @@ import java.util.UUID;
 @Getter
 @Setter
 public class PhoneNumberDTO {
-    @Size(min = 11, max = 11)
-    @NotNull
+    @Size(min = 11, max = 11, message = "Номер телефона должен состоять из 11 чисел")
+    @NotNull(message = "Номер телефона не должен быть пустым")
     private String phoneNumber;
-    @NotNull
+    @NotNull(message = "ИД пользователя не должен быть пустым")
     private UUID idUser;
 }

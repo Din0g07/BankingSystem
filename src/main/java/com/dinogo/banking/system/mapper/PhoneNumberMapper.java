@@ -10,5 +10,4 @@ import java.util.List;
 public interface PhoneNumberMapper {
     PhoneNumberDTO map(PhoneNumber phoneNumber);
     PhoneNumber map(PhoneNumberDTO phoneNumberDTO);
-    List<PhoneNumberDTO> map(List<PhoneNumber> phoneNumber);
 }

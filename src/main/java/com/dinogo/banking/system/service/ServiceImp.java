@@ -44,15 +44,10 @@ public class ServiceImp implements Service{
     private UserMapper userMapper;
 
     @Override
-    public List<PhoneNumberDTO> getAllNumbersByUser(UUID userId) {
-        return phoneNumberMapper.map(
-                phoneNumberRepository.findAllByUserId(userId));
-    }
-
-    @Override
     public UUID addNewUser(UserDTO userDTO) {
         User user = userMapper.map(userDTO);
         user.setId(UUID.randomUUID());
+        user.setInitialBalance(user.getBalance());
 
         user.setPhoneNumbers(userDTO.getPhoneNumbers().stream()
                 .map((phone) -> new PhoneNumber(UUID.randomUUID(), phone, user))

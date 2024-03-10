@@ -42,20 +42,7 @@ public class User {
     @Column(name = "balance")
     private double balance;
 
-    public void addEmailToUser(Email email) {//Удалить?
-        if(emails == null) {
-            emails = new ArrayList<>();
-        }
-        emails.add(email);
-        email.setUser(this);
-    }
-
-    public void addPhoneNumberToUser(PhoneNumber phoneNumber) {//Удалить
-        if(phoneNumbers == null) {
-            phoneNumbers = new ArrayList<>();
-        }
-        phoneNumbers.add(phoneNumber);
-        phoneNumber.setUser(this);
-    }
+    @Column(name = "initial_balance")
+    private double initialBalance;
 
 }

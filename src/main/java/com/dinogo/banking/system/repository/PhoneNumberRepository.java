@@ -13,7 +13,7 @@ public interface PhoneNumberRepository extends JpaRepository<PhoneNumber, UUID> 
     List<PhoneNumber> findAllByUserId(UUID userId);
     @Query(value = "SELECT COUNT(*) FROM phone_numbers WHERE user_id = " +
             "(SELECT user_id FROM phone_numbers WHERE id = :phoneId)",
-    nativeQuery = true)
+            nativeQuery = true)
     int countPhoneNumbersByUserWithPhoneId(UUID phoneId);
 
     @Query(value = "SELECT COUNT(*)\n" +

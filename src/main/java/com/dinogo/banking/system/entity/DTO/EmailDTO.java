@@ -10,8 +10,9 @@ import java.util.UUID;
 @Getter
 @Setter
 public class EmailDTO {
-    @Email
+    @Email(message = "Имейл должен быть в верном формате")
+    @NotNull(message = "Имейл не должен быть пустым")
     private String email;
-    @NotNull
+    @NotNull(message = "ИД пользователя не должен быть пустым")
     private UUID idUser;
 }

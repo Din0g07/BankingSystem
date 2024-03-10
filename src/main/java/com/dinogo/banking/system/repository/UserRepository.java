@@ -17,7 +17,8 @@ public interface UserRepository extends JpaRepository<User, UUID> {
             "WHERE (:date IS NULL OR u.date_of_birth > :date) " +
             "AND (:phoneNumber IS NULL OR pn.phone_number = :phoneNumber) " +
             "AND (:fullName IS NULL OR u.full_name LIKE CONCAT(:fullName, '%')) " +
-            "AND (:email IS NULL OR e.email = :email)", nativeQuery = true)
+            "AND (:email IS NULL OR e.email = :email)",
+            nativeQuery = true)
     List<User> usersSearch(Date date,
                            String phoneNumber,
                            String fullName,
