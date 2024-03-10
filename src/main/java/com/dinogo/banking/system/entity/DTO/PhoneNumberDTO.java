@@ -1,12 +1,19 @@
 package com.dinogo.banking.system.entity.DTO;
 
-import com.dinogo.banking.system.entity.User;
+import jakarta.validation.constraints.Digits;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import lombok.Setter;
+
+import java.util.UUID;
 
 @Getter
 @Setter
 public class PhoneNumberDTO {
+    @Size(min = 11, max = 11)
+    @NotNull
     private String phoneNumber;
-    private User user;
+    @NotNull
+    private UUID idUser;
 }

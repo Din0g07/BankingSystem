@@ -40,9 +40,9 @@ public class User {
     private List<PhoneNumber> phoneNumbers;
 
     @Column(name = "balance")
-    private int balance;
+    private double balance;
 
-    public void addEmailToUser(Email email) {
+    public void addEmailToUser(Email email) {//Удалить?
         if(emails == null) {
             emails = new ArrayList<>();
         }
@@ -50,7 +50,7 @@ public class User {
         email.setUser(this);
     }
 
-    public void addPhoneNumberToUser(PhoneNumber phoneNumber) {
+    public void addPhoneNumberToUser(PhoneNumber phoneNumber) {//Удалить
         if(phoneNumbers == null) {
             phoneNumbers = new ArrayList<>();
         }
