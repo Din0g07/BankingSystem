@@ -7,6 +7,7 @@ import com.dinogo.banking.system.entity.DTO.PhoneNumberDTO;
 import com.dinogo.banking.system.entity.DTO.UserDTO;
 import com.dinogo.banking.system.service.Service;
 import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -30,25 +31,21 @@ public class Controller {
     @Autowired
     private Service service;
 
-    @GetMapping("/phoneNumbers/{id}")
-    public List<PhoneNumberDTO> getAllPhoneNumbersByUser(@PathVariable UUID id) {//Удалить?
-        return service.getAllNumbersByUser(id);
-    }
-
     @PostMapping("/users")
     public UUID addNewUser(@RequestBody @Valid UserDTO userDTO) {
         return service.addNewUser(userDTO);
     }
 
     @PostMapping("/phoneNumbers")
-    public void addNewPhoneNumber(@RequestBody @Valid PhoneNumberDTO phoneNumberDTO) {
-        service.addNewPhoneNumber(phoneNumberDTO);
+    public UUID addNewPhoneNumber(@RequestBody @Valid PhoneNumberDTO phoneNumberDTO) {
+        return service.addNewPhoneNumber(phoneNumberDTO);
     }
 
     @PutMapping("/phoneNumbers/{id}")
-    public void updatePhoneNumber(@RequestBody @Valid PhoneNumberDTO phoneNumberDTO,
+    public UUID updatePhoneNumber(@RequestBody @Valid PhoneNumberDTO phoneNumberDTO,
+                                  @NotNull(message = "ИД не должен быть пустым")
                                   @PathVariable UUID id) {
-        service.updatePhoneNumber(phoneNumberDTO, id);
+        return service.updatePhoneNumber(phoneNumberDTO, id);
     }
 
     @DeleteMapping("/phoneNumbers/{id}")
@@ -63,12 +60,14 @@ public class Controller {
 
     @PutMapping("/emails/{id}")
     public UUID updateEmail(@RequestBody @Valid EmailDTO emailDTO,
+                            @NotNull(message = "ИД не должен быть пустым")
                             @PathVariable UUID id) {
         return service.updateEmail(emailDTO, id);
     }
 
     @DeleteMapping("/emails/{id}")
-    public void deleteEmail(@PathVariable UUID id) {
+    public void deleteEmail(@NotNull(message = "ИД не должен быть пустым")
+                            @PathVariable UUID id) {
         service.deleteEmail(id);
     }
 

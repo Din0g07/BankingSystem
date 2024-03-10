@@ -10,6 +10,6 @@ import lombok.Setter;
 @AllArgsConstructor
 public class BaseResponse<T> {
     private boolean status;
-    private T budy;
+    private T body;
     private BankingSystemExceptionInfo errorInfo;
 }

@@ -10,11 +10,11 @@ import java.util.UUID;
 @Getter
 @Setter
 public class BalanceRqDTO {
-    @NotNull
+    @NotNull(message = "ИД пользователя не должен быть пустым")
     UUID idSender;
-    @NotNull
+    @NotNull(message = "ИД пользователя не должен быть пустым")
     UUID idReceiver;
-    @NotNull
-    @Positive
+    @NotNull(message = "Сумма не должна быть пустым")
+    @Positive(message = "Сумма должна быть положительным")
     double sum;
 }

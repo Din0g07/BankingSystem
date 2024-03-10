@@ -1,6 +1,7 @@
 package com.dinogo.banking.system.entity.DTO;
 
 import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
 import jakarta.validation.constraints.Size;
@@ -13,18 +14,18 @@ import java.util.List;
 @Getter
 @Setter
 public class UserDTO {
-    @NotNull
-    @Size(min = 1, max = 150)
+    @NotNull(message = "ФИО не должно быть пустым")
+    @Size(min = 1, max = 150, message = "ФИО не должно быть пустым или слишком длинным")
     private String fullName;
-    @NotNull
+    @NotNull(message = "Дата рождения не должно быть пустым")
     private Date date;
-    @Positive
-    @NotNull
+    @Positive(message = "Баланс должен быть положительным")
+    @NotNull(message = "Баланс не должно быть пустым")
     private int balance;
     @Size(min = 11, max = 11)
-    @NotNull
+    @NotEmpty(message = "Номера телефона не должны быть пустым")
     private List<String> phoneNumbers;
     @Email
-    @NotNull
+    @NotEmpty(message = "Имейлы не должны быть пустым")
     private List<String> emails;
 }

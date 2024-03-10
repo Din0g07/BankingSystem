@@ -10,5 +10,4 @@ import java.util.List;
 public interface EmailMapper {
     EmailDTO map(Email email);
     Email map(EmailDTO emailDTO);
-    List<EmailDTO> map(List<Email> emails);
 }

@@ -12,7 +12,6 @@ import java.util.List;
 import java.util.UUID;
 
 public interface Service {
-    List<PhoneNumberDTO> getAllNumbersByUser(UUID userId);
     UUID addNewUser(UserDTO userDTO);
     UUID updatePhoneNumber(PhoneNumberDTO phoneNumberDTO,
                            UUID id);
