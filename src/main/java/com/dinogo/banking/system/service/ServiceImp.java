@@ -145,15 +145,15 @@ public class ServiceImp implements Service{
         User sender = userRepository
                 .findById(balanceRqDTO.getIdSender())
                 .orElseThrow(() -> new BankingSystemCommonException("Пользователь не найден"));
-        if(sender.getBalance() <= balanceRqDTO.getSum()) {
+        if(sender.getBalance().compareTo(balanceRqDTO.getSum()) <= 0) {
             throw new BankingSystemCommonException("Недостаточно средств на счету");
         }
         User receiver = userRepository
                 .findById(balanceRqDTO.getIdReceiver())
                 .orElseThrow(() -> new BankingSystemCommonException("Пользователь не найден"));
 
-        sender.setBalance(sender.getBalance() - balanceRqDTO.getSum());
-        receiver.setBalance(receiver.getBalance() + balanceRqDTO.getSum());
+        sender.setBalance(sender.getBalance().subtract(balanceRqDTO.getSum()));
+        receiver.setBalance(receiver.getBalance().add(balanceRqDTO.getSum()));
 
         userRepository.save(sender);
         userRepository.save(receiver);
