@@ -5,6 +5,7 @@ import jakarta.validation.constraints.Positive;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.math.BigDecimal;
 import java.util.UUID;
 
 @Getter
@@ -16,5 +17,5 @@ public class BalanceRqDTO {
     UUID idReceiver;
     @NotNull(message = "Сумма не должна быть пустым")
     @Positive(message = "Сумма должна быть положительным")
-    double sum;
+    BigDecimal sum;
 }

@@ -8,6 +8,7 @@ import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.math.BigDecimal;
 import java.sql.Date;
 import java.util.List;
 
@@ -21,11 +22,9 @@ public class UserDTO {
     private Date date;
     @Positive(message = "Баланс должен быть положительным")
     @NotNull(message = "Баланс не должно быть пустым")
-    private int balance;
-    @Size(min = 11, max = 11)
+    private BigDecimal balance;
     @NotEmpty(message = "Номера телефона не должны быть пустым")
     private List<String> phoneNumbers;
-    @Email
     @NotEmpty(message = "Имейлы не должны быть пустым")
     private List<String> emails;
 }
