@@ -9,4 +9,4 @@
 - Validation
 - ExceptionHandling
 - Mapstruct
-- Swagger, Lonbok, логгирование.
+- Swagger, Lombok, логгирование.
